@@ -1,8 +1,9 @@
 <?php
-class ConnectDB {
-	private $host;
-	private $user;
-	private $password;
+include 'Credentials.php';
+class db {
+	private $host = "192.168.1.21";
+	private $user = Credentials.user; 
+	private $password = Credentials.password;
 	private $conn;
 	function __construct($host, $user, $password) {
 		$this->host = $host;
@@ -45,11 +46,7 @@ class ConnectDB {
 	function select_db($dbname) {
 		mysql_select_db($dbname);
 	}
-	function runStatement($statement) {
-		$runquery = mysql_query($statement, $this->getConn());
-		if(! $runquery) die('something blew up while running statement: ' . mysql_error());
-		echo "statement runned successfully";
-	}
+	
 
 }
 
