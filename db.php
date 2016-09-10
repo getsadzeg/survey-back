@@ -2,8 +2,8 @@
 include 'Credentials.php';
 class db {
 	private $host = "192.168.1.21";
-	private $user = Credentials.user;
-	private $password = Credentials.password;
+	private $user = Credentials->user;
+	private $password = Credentials->password;
 	private $conn;
 	function __construct() {
 	}

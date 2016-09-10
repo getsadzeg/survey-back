@@ -1,6 +1,5 @@
 <?php
 include 'db.php'
-class survey {
 	$fields = [];
 	foreach($_POST as $fieldName => $valueName) {
 		fields[$fieldName] = $valueName;
@@ -10,6 +9,5 @@ class survey {
 	echo json_encode([
 		"success" => $success
 	]);
-}
 ?>
 
