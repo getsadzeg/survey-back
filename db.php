@@ -2,7 +2,7 @@
 include 'Credentials.php';
 class db {
 	private $host = "192.168.1.21";
-	private $user = Credentials.user; 
+	private $user = Credentials.user;
 	private $password = Credentials.password;
 	private $conn;
 	function __construct($host, $user, $password) {
@@ -46,8 +46,28 @@ class db {
 	function select_db($dbname) {
 		mysql_select_db($dbname);
 	}
-	
+	function runStatement($statement) {
+		$runquery = mysql_query($statement, $this->getConn());
+		if(! $runquery) die('something blew up while running statement: ' . mysql_error());
+		echo "statement runned successfully \n";
+	}
 
+	function insertSurvey($fields) {
+		$query = "INSERT into person '.'(";
+		foreach($fields as $key => $value) {
+			if($key != end(array_keys($fields))) {
+				$query+=$key . ",";
+				break;
+			}
+			else $query+=$key . ") '.'VALUES (";
+			if($value != end(array_values($fields))) {
+				$query+="\"" . $value . "\", ";
+				break;
+			}
+			else $query+="\"" . $value . "\" )";
+		}
+		this->runStatement($query);
+	}
 }
 
 ?>
