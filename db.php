@@ -5,10 +5,7 @@ class db {
 	private $user = Credentials.user;
 	private $password = Credentials.password;
 	private $conn;
-	function __construct($host, $user, $password) {
-		$this->host = $host;
-		$this->user = $user;
-		$this->password = $password;
+	function __construct() {
 	}
 	function setHost($host) {
 		$this->host = $host;
