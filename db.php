@@ -46,9 +46,12 @@ class db {
 		mysql_select_db($dbname);
 	}
 	function runStatement($statement) {
+		$this->open();
+		$this->select_db("survey");
 		$runquery = mysql_query($statement, $this->getConn());
 		if(! $runquery) die('something blew up while running statement: ' . mysql_error());
 		echo "statement runned successfully \n";
+		$this->close();
 	}
 
 	function insertSurvey($fields) {
