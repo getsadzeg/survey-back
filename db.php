@@ -6,8 +6,8 @@ class db {
 	private $password;
 	private $conn;
 	function __construct() {
-		$this->user = Credentials::$user;
-		$this->password = Credentials::$password;
+		$this->user = Credentials::user;
+		$this->password = Credentials::password;
 	}
 	function setHost($host) {
 		$this->host = $host;
