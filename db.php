@@ -2,10 +2,12 @@
 include 'Credentials.php';
 class db {
 	private $host = "192.168.1.21";
-	private $user = Credentials->user;
-	private $password = Credentials->password;
+	private $user;
+	private $password;
 	private $conn;
 	function __construct() {
+		$this->user = Credentials::$user;
+		$this->password = Credentials::$password;
 	}
 	function setHost($host) {
 		$this->host = $host;
@@ -63,7 +65,7 @@ class db {
 			}
 			else $query+="\"" . $value . "\" )";
 		}
-		this->runStatement($query);
+		$this->runStatement($query);
 	}
 }
 
