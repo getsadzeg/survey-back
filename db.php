@@ -55,7 +55,7 @@ class db {
 	}
 
 	function insertSurvey($fields) {
-		$query = "INSERT into person '.'(";
+		$query = "INSERT into info '.'(";
 		foreach($fields as $key => $value) {
 			if($key != end(array_keys($fields))) {
 				$query+=$key . ",";
@@ -68,6 +68,7 @@ class db {
 			}
 			else $query+="\"" . $value . "\" )";
 		}
+		echo $query;
 		$this->runStatement($query);
 	}
 }
