@@ -16,6 +16,8 @@ if (isset($_POST["surveyobj"])) {
 	if (!$fields) $fields = [];
 }
 
+print_r($fields);
+
 $dbobj = new db();
 $insert = $dbobj->insertSurvey($fields);
 
