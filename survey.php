@@ -1,6 +1,6 @@
 <?php
-ini_set(“error_reporting”, E_ALL);
-ini_set(“display_errors”, true);
+ini_set("error_reporting", E_ALL);
+ini_set("display_errors", true);
 
 
 require_once 'db.php';
@@ -12,7 +12,7 @@ foreach($_POST as $fieldName => $valueName) {
 	$fields[$fieldName] = $valueName;
 }
 
-$db = new db();
+$dbobj = new db();
 $insert = $dbobj->insertSurvey($fields);
 
 if ($insert === true) {
