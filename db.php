@@ -56,18 +56,18 @@ class db {
 
 	function insertSurvey($fields) {
 		if(!count($fields)) die("0 fields were sent by client");
-		$query = "INSERT into info '.'(";
+		$query = "INSERT into info (";
 		foreach($fields as $key => $value) {
 			if($key != end(array_keys($fields))) {
-				$query+=$key . ",";
+				$query.=$key . ",";
 				break;
 			}
-			else $query+=$key . ") '.'VALUES (";
+			else $query.=$key . ") VALUES (";
 			if($value != end(array_values($fields))) {
-				$query+="\"" . $value . "\", ";
+				$query.="\"" . $value . "\", ";
 				break;
 			}
-			else $query+="\"" . $value . "\" )";
+			else $query.="\"" . $value . "\" );";
 		}
 		echo $query;
 		$this->runStatement($query);
