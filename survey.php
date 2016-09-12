@@ -8,16 +8,20 @@ require_once 'json.php';
 
 $fields = [];
 
-foreach($_POST as $fieldName => $valueName) {
-	$fields[$fieldName] = $valueName;
+// if surveyobj key is set in the post request, decode the JSON
+if (isset($_POST["surveyobj"])) {
+	$fields = json_decode($_POST["surveyobj"], true);
+	// if json_decode returns some kind of error (if provided string is not a json)
+	// just use an empty array
+	if (!$fields) $fields = [];
 }
 
 $dbobj = new db();
 $insert = $dbobj->insertSurvey($fields);
 
 if ($insert === true) {
-    // succeed function will generate JSON string, with success: true key, and stop the PHP code execution
-    // (meaning next lines wont matter)
+	// succeed function will generate JSON string, with success: true key, and stop the PHP code execution
+	// (meaning next lines wont matter)
 	succeed();
 }
 // if code execution gets to this point, $dbobj->insertSurvey didn't return true, so it is a failure
