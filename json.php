@@ -6,7 +6,7 @@ function succeed($message) {
     
     $json = [
         "success" => true,
-        "message" = >$message,
+        "message" => $message,
     ];
     
     $jsonString = json_encode($json);
