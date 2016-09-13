@@ -49,8 +49,8 @@ class db {
 		$this->open();
 		$this->select_db("survey");
 		$runquery = mysql_query($statement, $this->getConn());
-		if(! $runquery) die('something blew up while running statement: ' . mysql_error());
-		echo "statement runned successfully \n";
+		if(! $runquery) return false;
+		else return true;
 		$this->close();
 	}
 
@@ -67,7 +67,7 @@ class db {
 		$valueString.= "\");";
 		$query.=$valueString;
 		echo $query;
-		$this->runStatement($query);
+	        return $this->runStatement($query);
 	}
 }
 
