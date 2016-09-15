@@ -1,6 +1,6 @@
 <?php
 
-// function for returing successful response status
+// function for returning successful response status
 function succeed($message) {
     if (!$message) $message = "Success";
     
